@@ -40,7 +40,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <p className="text-lg text-card-foreground">
-              I'm a passionate software developer with a keen interest in creating innovative solutions. 
+              I&apos;m a passionate software developer with a keen interest in creating innovative solutions. 
               With a strong foundation in web technologies and a love for clean, efficient code, 
               I strive to build applications that make a difference.
             </p>
