@@ -11,16 +11,16 @@ interface Quote {
 
 const quotes: Quote[] = [
   {
-    text: "Kaleb's ability to quickly grasp complex concepts and implement innovative solutions is truly impressive.",
+    text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",
     author: "John 3:16",
   },
   {
-    text: "Working with Kaleb was a game-changer for our project. His dedication and expertise significantly improved our outcomes.",
-    author: "John Smith",
+    text: "Government 'help' to business is just as disastrous as government persecution... the only way a government can be of service to national prosperity is by keeping its hands off.",
+    author: "Ayn Rand",
   },
   {
-    text: "Kaleb's problem-solving skills and attention to detail make him an invaluable asset to any development team.",
-    author: "Emily Johnson",
+    text: "Next.js has been a game-changer for our agency work and team collaboration. Its powerful features have allowed us to build high-performance websites quickly and efficiently like never before.",
+    author: "Daniel Lopez",
   }
 ]
 
