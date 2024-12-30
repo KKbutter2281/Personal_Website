@@ -5,8 +5,6 @@ import { motion } from 'framer-motion'
 interface Quote {
   text: string
   author: string
-  role: string
-  avatar: string
 }
 
 const quotes: Quote[] = [
