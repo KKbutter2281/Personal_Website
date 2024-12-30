@@ -41,10 +41,6 @@ export function QuoteWall() {
               <blockquote className="space-y-2">
                 <p className="text-lg text-card-foreground">&ldquo;{quote.text}&rdquo;</p>
                 <footer className="flex items-center space-x-4 mt-4">
-                  <Avatar>
-                    <AvatarImage src={quote.avatar} alt={quote.author} />
-                    <AvatarFallback>{quote.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
                   <div>
                     <p className="text-sm font-semibold text-primary">{quote.author}</p>
                   </div>
