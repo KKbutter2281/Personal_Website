@@ -12,21 +12,15 @@ interface Quote {
 const quotes: Quote[] = [
   {
     text: "Kaleb's ability to quickly grasp complex concepts and implement innovative solutions is truly impressive.",
-    author: "Jane Doe",
-    role: "Senior Developer at Tech Co.",
-    avatar: "/avatars/jane-doe.jpg"
+    author: "John 3:16",
   },
   {
     text: "Working with Kaleb was a game-changer for our project. His dedication and expertise significantly improved our outcomes.",
     author: "John Smith",
-    role: "Project Manager at Innovate Inc.",
-    avatar: "/avatars/john-smith.jpg"
   },
   {
     text: "Kaleb's problem-solving skills and attention to detail make him an invaluable asset to any development team.",
     author: "Emily Johnson",
-    role: "CTO at StartUp Solutions",
-    avatar: "/avatars/emily-johnson.jpg"
   }
 ]
 
@@ -42,8 +36,8 @@ export function QuoteWall() {
         >
           <Card className="bg-card h-full">
             <CardHeader>
-              <CardTitle className="text-primary">Testimonial</CardTitle>
-              <CardDescription className="text-muted-foreground">What people are saying</CardDescription>
+              <CardTitle className="text-primary">Quotes</CardTitle>
+              <CardDescription className="text-muted-foreground">Quote Wall</CardDescription>
             </CardHeader>
             <CardContent>
               <blockquote className="space-y-2">
@@ -55,7 +49,6 @@ export function QuoteWall() {
                   </Avatar>
                   <div>
                     <p className="text-sm font-semibold text-primary">{quote.author}</p>
-                    <p className="text-sm text-muted-foreground">{quote.role}</p>
                   </div>
                 </footer>
               </blockquote>
