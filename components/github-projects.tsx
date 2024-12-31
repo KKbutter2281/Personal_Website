@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Github, Star, GitFork } from 'lucide-react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
 interface Repo {
   id: number
@@ -22,6 +21,7 @@ export default function GitHubProjects() {
   const [repos, setRepos] = useState<Repo[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     fetch('/api/github')
@@ -40,6 +40,9 @@ export default function GitHubProjects() {
         console.error('Error fetching GitHub data:', error)
         setError(error.message)
         setLoading(false)
+      })
+      .finally(() => {
+        setMounted(true)
       })
   }, [])
 
@@ -81,13 +84,12 @@ export default function GitHubProjects() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {repos.map((repo, index) => (
-        <motion.div
+        <div
           key={repo.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="opacity-0 translate-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-forwards"
+          style={{ animationDelay: `${index * 100}ms` }}
         >
-          <Card className="flex flex-col justify-between h-full bg-card">
+          <Card className="h-full bg-card">
             <CardHeader>
               <CardTitle className="text-primary">{repo.name}</CardTitle>
               <CardDescription className="text-muted-foreground">{repo.description}</CardDescription>
@@ -114,7 +116,7 @@ export default function GitHubProjects() {
               </Button>
             </CardFooter>
           </Card>
-        </motion.div>
+        </div>
       ))}
     </div>
   )
