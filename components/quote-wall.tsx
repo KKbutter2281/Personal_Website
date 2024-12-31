@@ -1,5 +1,8 @@
+'use client'
+
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { motion } from 'framer-motion'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface Quote {
   text: string
@@ -22,32 +25,35 @@ const quotes: Quote[] = [
 ]
 
 export function QuoteWall() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {quotes.map((quote, index) => (
-        <motion.div
+        <div
           key={index}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="opacity-0 translate-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-forwards"
+          style={{ animationDelay: `${index * 100}ms` }}
         >
-          <Card className="bg-card h-full">
+          <Card className="h-full bg-card">
             <CardHeader>
-              <CardTitle className="text-primary">Quotes</CardTitle>
-              <CardDescription className="text-muted-foreground">Quote Wall</CardDescription>
+              <CardTitle className="text-primary">Testimonial</CardTitle>
+              <CardDescription className="text-muted-foreground">What people are saying</CardDescription>
             </CardHeader>
             <CardContent>
               <blockquote className="space-y-2">
                 <p className="text-lg text-card-foreground">&ldquo;{quote.text}&rdquo;</p>
                 <footer className="flex items-center space-x-4 mt-4">
-                  <div>
-                    <p className="text-sm font-semibold text-primary">{quote.author}</p>
                   </div>
                 </footer>
               </blockquote>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       ))}
     </div>
   )
