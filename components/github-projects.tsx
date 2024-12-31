@@ -21,7 +21,7 @@ export default function GitHubProjects() {
   const [repos, setRepos] = useState<Repo[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [mounted, setMounted] = useState(false)
+  const [setMounted] = useState(false)
 
   useEffect(() => {
     fetch('/api/github')
