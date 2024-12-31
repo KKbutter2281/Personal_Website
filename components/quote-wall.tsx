@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 interface Quote {
   text: string
@@ -48,6 +47,8 @@ export function QuoteWall() {
               <blockquote className="space-y-2">
                 <p className="text-lg text-card-foreground">&ldquo;{quote.text}&rdquo;</p>
                 <footer className="flex items-center space-x-4 mt-4">
+                  <div>
+                    <span>&mdash; {quote.author}</span>
                   </div>
                 </footer>
               </blockquote>
@@ -58,4 +59,3 @@ export function QuoteWall() {
     </div>
   )
 }
-
