@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import { User, Code, Briefcase, MessageSquare } from 'lucide-react'
 
 const navItems = [
@@ -13,6 +12,7 @@ const navItems = [
 
 export function FloatingNav() {
   const [activeSection, setActiveSection] = useState('')
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,34 +30,35 @@ export function FloatingNav() {
       observer.observe(section)
     })
 
+    setMounted(true)
+
     return () => observer.disconnect()
   }, [])
 
+  if (!mounted) return null
+
   return (
-    <motion.nav
-      className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 rounded-full shadow-lg px-4 py-2 z-50"
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <ul className="flex space-x-4">
-        {navItems.map(({ icon: Icon, label, href }) => (
-          <li key={label}>
-            <a
-              href={href}
-              className={`flex flex-col items-center p-2 rounded-full transition-colors ${
-                activeSection === href.slice(1)
-                  ? 'text-primary bg-primary/10'
-                  : 'text-gray-500 hover:text-primary'
-              }`}
-            >
-              <Icon className="w-6 h-6" />
-              <span className="text-xs mt-1">{label}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </motion.nav>
+    <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-in-out opacity-90 hover:opacity-100">
+      <nav className="bg-background/80 backdrop-blur-sm rounded-full shadow-lg px-4 py-2 border border-border/50">
+        <ul className="flex space-x-4">
+          {navItems.map(({ icon: Icon, label, href }) => (
+            <li key={label}>
+              <a
+                href={href}
+                className={`flex flex-col items-center p-2 rounded-full transition-colors ${
+                  activeSection === href.slice(1)
+                    ? 'text-primary bg-primary/10'
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                <Icon className="w-5 h-5" />
+                <span className="text-xs mt-1">{label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   )
 }
 
